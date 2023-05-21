@@ -2,6 +2,15 @@
 
 <%= render @customer %>
 
+<div id="orders">
+  <h1><%= @customer.first_name %>'s Orders</h1>
+    <%= render partial: "orders/order", collection: @customer.orders %>  
+  <h2>Add an Order</h2>
+    <%= render partial: "orders/form", locals: {order: @customer.orders.new} %>
+
+</div>
+
+
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>

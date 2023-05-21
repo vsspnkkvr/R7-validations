@@ -11,4 +11,24 @@
   <% end %>
 </div>
 
+<h1>Orders</h1>
+
+
+<div id="orders">
+  <% @customers.each do |customer| %>
+    <% customer.orders.each do |order| %>
+      <div>
+        <strong><%= order.product_name %>:</strong>
+        <%= order.product_count.to_s %>
+        <strong> Costomer ID:</strong>
+        <%= order.customer_id.to_s %>
+          <p>
+            <%= link_to "Show this customer to edit order", customer %>
+          </p>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+
 <%= link_to "New customer", new_customer_path %>

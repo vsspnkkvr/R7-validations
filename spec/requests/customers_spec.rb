@@ -18,14 +18,14 @@ RSpec.describe "CustomersControllers", type: :request do
       expect(response).to redirect_to customers_path
     end
   end
-describe "get new_customer_path" do
+describe "get new_customer_path(id: customer.id)" do
     it "renders the :new template" do
       customer = FactoryBot.create(:customer)
       get customer_path(id: customer.id)
       expect(response).to render_template(:new)
     end
   end
-  describe "get edit_customer_path" do
+  describe "get edit_customer_path(id: customer.id)" do
     it "renders the :edit template" do
       customer = FactoryBot.create(:customer)
       get customer_path(id: customer.id)
@@ -52,27 +52,27 @@ describe "get new_customer_path" do
   describe "put customer_path with valid data" do
     it "updates an entry and redirects to the show path for the customer" do
       customer = FactoryBot.create(:customer)
-      put customer_path(customer.id), params: {customer: {phone: "123"}}
+      put customer_path(customer.id), params: {customer: {phone: "1234567890"}}
       customer.reload
-      expect(customer.phone).to eq("123")
-      expect(response).to render_template(:edit) 
+      expect(customer.phone).to eq("1234567890")
+      expect(response).to redirect_to customer_path 
     end
   end
   describe "put customer_path with invalid data" do
     it "does not update the customer record or redirect" do
       customer = FactoryBot.create(:customer)
-      put customer_path(customer.id), params: {customer: {phone: "123"}}
+      put customer_path(customer.id), params: {customer: {phone: "1234567890"}}
       customer.reload
-      expect(customer.phone).not_to eq("123")
+      expect(customer.phone).not_to eq("1234567890")
       expect(response).to render_template(:edit) 
     end
   end
   describe "delete a customer record" do
     it "deletes a customer record" do
-      customer = FactoryBot.destroy(:customer)
-      get customer_path(id: customer.id) 
+      customer = FactoryBot.create(:customer)
+      delete customer_path(id: customer.id) 
       expect(customer).to eq(nil)
-      expect(response).to render_template(:index)
+      expect(response).to redirect_to(customers_path)
     end
   end
 end

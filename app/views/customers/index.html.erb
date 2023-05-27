@@ -6,9 +6,30 @@
   <% @customers.each do |customer| %>
     <%= render customer %>
     <p>
-      <%= link_to "Show this customer", customer %>
+      <%= link_to "Show this customer", customer class: "btn btn-primary"%>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New customer", new_customer_path %>
+<h1>Orders</h1>
+
+
+<div id="orders">
+  <% @customers.each do |customer| %>
+    <% customer.orders.each do |order| %>
+      <div>
+      <i class="far fa-address-book"></i>
+        <strong><%= order.product_name %>:</strong>
+        <%= order.product_count.to_s %>
+        <strong> Costomer ID:</strong>
+        <%= order.customer_id.to_s %>
+          <p>
+            <%= link_to "Show this customer to edit order", customer class: "btn btn-primary"%>
+          </p>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+
+<%= link_to "New customer", new_customer_path class: "btn btn-primary"%>

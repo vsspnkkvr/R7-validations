@@ -1,0 +1,8 @@
+ <div>
+      <strong><%= order.product_name %>:</strong>
+      <%= order.product_count.to_s %>
+      <div class="order-admin">
+            <%= link_to "Edit", edit_customer_order_path(@customer, order) class: "btn btn-primary"%>
+            <%= link_to "Delete", [@customer, order], data: { 'turbo-method': :delete } class: "btn btn-primary"%>
+      </div>
+</div>

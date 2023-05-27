@@ -11,3 +11,16 @@ $fa-font-path: "./webfonts";
 .my_alert {
     color: red;
   }
+
+  @font-face {
+    font-family: 'Palm Beach';
+    src: url('Palm Beach.ttf');
+ }
+ h1 {
+    font-family: 'Palm Beach';
+  }
+
+  #banner-background {
+    background-image: url('blue.png');
+    background-size: cover;
+  }

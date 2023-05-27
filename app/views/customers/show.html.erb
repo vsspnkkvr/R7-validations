@@ -2,7 +2,7 @@
 
 <%= render @customer %>
 
-<div id="orders">
+<div id="orders" class="card shadow p-3 mb-5 bg-white rounded">
   <h1><%= @customer.first_name %>'s Orders</h1>
     <%= render partial: "orders/order", collection: @customer.orders %>  
   <h2>Add an Order</h2>
@@ -12,8 +12,8 @@
 
 
 <div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
+  <%= link_to "Edit this customer", edit_customer_path(@customer) class: "btn btn-primary"%> |
+  <%= link_to "Back to customers", customers_path class: "btn btn-primary"%>
 
   <%= button_to "Destroy this customer", @customer, method: :delete %>
 </div>
